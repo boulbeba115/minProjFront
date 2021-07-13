@@ -22,14 +22,36 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "allowedCommonJsDependencies": [
+              "core-js-pure/features/array/from",
+              "core-js-pure/features/array/is-array",
+              "core-js-pure/features/instance/slice",
+              "core-js-pure/features/object/create",
+              "core-js-pure/features/object/define-property",
+              "core-js-pure/features/object/get-own-property-descriptor",
+              "core-js-pure/features/object/get-prototype-of",
+              "core-js-pure/features/object/set-prototype-of",
+              "core-js-pure/features/promise",
+              "core-js-pure/features/reflect/get",
+              "core-js-pure/features/symbol/iterator",
+              "core-js-pure/features/symbol",
+              "raf",
+              "jspdf-autotable"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/popper.js/dist/umd/popper.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -94,6 +116,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []

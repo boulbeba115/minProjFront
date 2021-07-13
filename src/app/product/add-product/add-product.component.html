@@ -1,0 +1,52 @@
+<ng-container *ngIf="isReady">
+    <h1 mat-dialog-title>Add New Product</h1>
+    <form class="add-category-form">
+        <div class="row">
+            <div class="col-sm-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Product Name</mat-label>
+                    <input type="text" matInput [(ngModel)]="product.nom" [formControl]="requiredValidator"
+                        [errorStateMatcher]="matcher">
+                    <mat-error *ngIf="requiredValidator.hasError('required')">
+                        Product Name is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Product Quantity</mat-label>
+                    <input type="number" min="0" [(ngModel)]="product.qte" matInput [formControl]="minQte"
+                        [errorStateMatcher]="matcher">
+                    <mat-error *ngIf="requiredValidator.hasError('min')">
+                        Minimum quantity is 0
+                    </mat-error>
+                    <mat-error *ngIf="requiredValidator.hasError('required')">
+                        Quantity is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Categories</mat-label>
+                    <mat-select [(ngModel)]="product.category.id" matInput [formControl]="requiredCatValidator"
+                        [errorStateMatcher]="matcher">
+                        <mat-option *ngFor="let item of categories" [value]="item.id">{{item.nom}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="requiredCatValidator.hasError('required')">
+                        plz select category
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-checkbox style="line-height: 5;" [(ngModel)]="product.disponible" name="disponible">Availability
+                </mat-checkbox>
+            </div>
+
+        </div>
+    </form>
+    <mat-dialog-actions style="float: right;">
+        <button mat-button [mat-dialog-close]="'cancel'" class="warn">Cancel</button>
+        <button mat-button [mat-dialog-close]="check()" [disabled]="isvalidated()" color="confirm"> Confirm</button>
+    </mat-dialog-actions>
+</ng-container>

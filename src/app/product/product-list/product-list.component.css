@@ -1,0 +1,59 @@
+th.mat-header-cell {
+    text-align: center !important;
+}
+.tab {
+    width: 100%;
+    text-align: center;
+}
+.ico-hov {
+    cursor: pointer;
+}
+.ico-edit:hover {
+    color: rgb(230, 72, 72);
+}
+mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color.ng-tns-c47-0 {
+    position: relative;
+    top: 6px;
+    color: gray;
+}
+.full-width {
+    width: 100%;
+}
+.iconet {
+    margin-right: 15px;
+    font-size: 21px;
+    color: gray !important;
+    line-height: 3;
+    text-align: right;
+    cursor: pointer;
+}
+.icon-blue {
+    color: #007bff !important;
+}
+.icon-blue:hover {
+    color: #2b8ef8 !important;
+}
+.icon-red {
+    color: #e42f17 !important;
+}
+.icon-red:hover {
+    color: #d6341f !important;
+}
+.icon-green {
+    color: #09913d !important;
+}
+.icon-green:hover {
+    color: #169145 !important;
+}
+.icon-orange {
+    color: #ff9a1e !important;
+}
+.icon-orange:hover {
+    color: #e48b1f !important;
+}
+.icon-dark-red {
+    color: #c22813 !important;
+}
+.icon-dark-red:hover {
+    color: #e93e27 !important;
+}

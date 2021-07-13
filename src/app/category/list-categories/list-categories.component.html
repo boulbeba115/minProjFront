@@ -1,0 +1,115 @@
+<div class="row" *ngIf="isReady">
+    <div class="col-sm-12 mat-elevation-z8">
+        <div class="col-sm-12" style=" margin-top: 15px;">
+            <h1>Category List</h1>
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-4">
+                    <form class="example-form">
+                        <mat-form-field class="full-width">
+                            <mat-label>search</mat-label>
+                            <mat-icon matSuffix>search</mat-icon>
+                            <input type="tel" [(ngModel)]="search" name="search" matInput (keyup)="onSearch()">
+                        </mat-form-field>
+                    </form>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <mat-form-field style="width: 100%;">
+                                <mat-label>Filter By</mat-label>
+                                <mat-select [(ngModel)]="filterValue">
+                                    <mat-option value="0">ID</mat-option>
+                                    <mat-option value="1">Name</mat-option>
+                                    <mat-option value="2">Creation Date</mat-option>
+                                    <mat-option value="3">Updating Date</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-form-field style="width: 100%;">
+                                <mat-label>Sort By</mat-label>
+                                <mat-select [(ngModel)]="sortValue" name="action" (selectionChange)="onSort()">
+                                    <mat-option value="0">ID</mat-option>
+                                    <mat-option value="1">Name</mat-option>
+                                    <mat-option value="2">Creation Date</mat-option>
+                                    <mat-option value="3">Updating Date</mat-option>
+                                    <mat-option value="4">Default</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-form-field style="width: 100%;">
+                                <mat-label>Sort Type</mat-label>
+                                <mat-select name="action" (selectionChange)="onSortType()">
+                                    <mat-option value="0">Ascending</mat-option>
+                                    <mat-option value="1">Descending</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div style="text-align: right;">
+                        <a class="iconet icon-blue" (click)="openAddDialog()"><i class="fa fa-plus"></i></a>
+                        <a class="iconet icon-red" (click)="exportAsPDF()"><i class="fa fa-file-pdf-o"></i></a>
+                        <a class="iconet icon-green" (click)="exportAsExel()"><i class="fa fa-file-excel-o"></i></a>
+                        <a class="iconet " (click)="refresh()"><i class="fa fa fa-undo"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <table mat-table [dataSource]="dataSource" class="tab">
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> ID </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+                <ng-container matColumnDef="nom">
+                    <th mat-header-cell *matHeaderCellDef> Nom </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="qte">
+                    <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                    <td mat-cell *matCellDef="let element"> {{element.qte}} </td>
+                </ng-container>
+                <ng-container matColumnDef="created">
+                    <th mat-header-cell *matHeaderCellDef> Creation Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+                </ng-container>
+                <ng-container matColumnDef="updated">
+                    <th mat-header-cell *matHeaderCellDef> Update Date </th>
+                    <td mat-cell *matCellDef="let element">
+                        <ng-container *ngIf="element.updatedAt">
+                            {{element.updatedAt}}
+                        </ng-container>
+                        <ng-container *ngIf="!element.updatedAt">
+                            _
+                        </ng-container>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div style="display: flex;width: fit-content;margin: 0 auto;">
+                            <a class="ico-hov" mat-icon-button routerLink="/product/category/{{ element.id }}">
+                                <mat-icon class="mat-accent icon-blue">list</mat-icon>
+                            </a>
+                            <a class="ico-hov" mat-icon-button (click)="openEditDialog(element.id)">
+                                <mat-icon class="mat-accent icon-orange">edit</mat-icon>
+                            </a>
+                            <a class="ico-hov ico-edit" mat-icon-button (click)="openDialog(element.id)">
+                                <mat-icon class="mat-error icon-dark-red">delete</mat-icon>
+                            </a>
+                        </div>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>

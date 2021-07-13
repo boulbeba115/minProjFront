@@ -16,6 +16,8 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false,
     "lib": [
       "es2018",
       "dom"
