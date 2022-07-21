@@ -2,7 +2,6 @@ pipeline{
   agent any
   tools {
     nodejs "node"
-    maven 'maven'
   }
   environment {
     REPO_URL= 'https://github.com/EmnaAbyda/Pfe-Sujet3'
